@@ -29,9 +29,10 @@ class Auth extends Component {
     UNSAFE_componentWillReceiveProps(props) {
         if (this.props.authResponse) {
             let user = this.props.authResponse[0]
-            console.log('this is user', JSON.stringify(user));
             if ((this.state.userName === user.name) && (this.state.userDob === user.birth_year)) {
-                this.props.navigation.navigate('NSearch');
+                setTimeout(() => {
+                    this.props.navigation.navigate('NSearch');
+                }, 200);
             } else {
                 Alert.alert("Authentication error!!");
             }

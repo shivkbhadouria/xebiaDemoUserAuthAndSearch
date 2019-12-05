@@ -26,8 +26,6 @@ export const doAuthenticateMethod = (URL) => {
         dispatch(doAuthenticate())
         hitGetAPI(URL)
         .then(([response, json]) => {
-            // console.log('URL===>', URL)
-            // console.log('response api===', json)
             dispatch(authenticateSuccess(json))
         })
         .catch((error) => dispatch(authenticateFail()))

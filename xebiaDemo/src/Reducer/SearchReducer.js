@@ -15,7 +15,7 @@ const SearchReducer = ( state = initialState, action ) => {
       response:{},
       isLoading: true
     }
-    case actionTypes.ACTION_SEARCH_FAIL:
+    case actionTypes.ACTION_SEARCH_SUCCESS:
     return {
       ...state,
       isLoading: false,

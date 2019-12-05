@@ -30,11 +30,12 @@ class Search extends Component {
         this.setState({
             searchText: search
         })
-        URL = BaseUrl+searchPlanets+name
+        URL = BaseUrl+searchPlanets+search
         this.props.getPlanetsList(URL);
     }
 
     render() {
+        let pl = this.props.planets;
         return(
             <SafeAreaView
             style={{
@@ -120,7 +121,7 @@ const mapDispatchToProps = dispatch => {
 // For accessing states from store
 const mapStateToProps = state => {
     return {
-        planets: state.AuthReducer.response.results,
+        planets: state.SearchReducer.response.results,
     };
 };
 
