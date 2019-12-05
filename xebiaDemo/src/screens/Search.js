@@ -3,11 +3,12 @@ import {
     View,
     SafeAreaView,
     FlatList,
-    Text
+    Text,
+    TextInput
 } from 'react-native';
 
 import { connect } from 'react-redux';
-import {BaseUrl, planet} from '../Const/URLConst'
+import {BaseUrl, planet, searchPlanets} from '../Const/URLConst'
 import { getPlanetsList } from '../ActionCreator/searchCreator';
 import styles from '../Utils/gStyle'
 
@@ -15,11 +16,22 @@ class Search extends Component {
   
     constructor(props) {
         super(props);
+        this.state={
+            searchText: ''
+        }
     }
 
     UNSAFE_componentWillMount() {
         URL = BaseUrl+planet
        this.props.getPlanetsList(URL);
+    }
+
+    searchPlanets(search) {
+        this.setState({
+            searchText: search
+        })
+        URL = BaseUrl+searchPlanets+name
+        this.props.getPlanetsList(URL);
     }
 
     render() {
@@ -32,6 +44,18 @@ class Search extends Component {
                 style={{
                     flex: 1,
                 }}>
+                    <View
+                    style={{
+                        width: '100%',
+                        height: 60,
+                        padding: 20,
+                    }}>
+                        <TextInput
+                        style={[{height: 40, width: '100%', marginBottom: 20}, styles.border]}
+                        placeholder="Search Planets"
+                        onChangeText={(text) => this.searchPlanets(text)}
+                        value={this.state.searchText}></TextInput>
+                    </View>
                     <FlatList
                     style={{
                         backgroundColor: 'white',
