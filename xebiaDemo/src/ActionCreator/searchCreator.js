@@ -22,7 +22,7 @@ export const searchFail = err => {
    }
 }
 
-export const doAuthenticateMethod = (URL) => {
+export const getPlanetsList = (URL) => {
     return (dispatch, getState) => {
         dispatch(doSearch())
         hitGetAPI(URL)

@@ -40,7 +40,7 @@ class Auth extends Component {
 
     checkAuthValidation() {
         URL = BaseUrl+authUrl+this.state.userName
-        this.props.doAuthenticateMethod(BaseUrl+authUrl+this.state.userName)
+        this.props.doAuthenticateMethod(URL)
     }
 
 
