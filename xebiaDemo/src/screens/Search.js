@@ -9,22 +9,17 @@ import {
 import { connect } from 'react-redux';
 import {BaseUrl, planet} from '../Const/URLConst'
 import { getPlanetsList } from '../ActionCreator/searchCreator';
-import style from '../Utils/gStyle'
+import styles from '../Utils/gStyle'
 
 class Search extends Component {
   
     constructor(props) {
         super(props);
-
-        this.state={
-            userName:'',
-            userDob:''
-        }
     }
 
     UNSAFE_componentWillMount() {
         URL = BaseUrl+planet
-        this.props.getPlanetsList(URL)
+       this.props.getPlanetsList(URL);
     }
 
     render() {
@@ -55,7 +50,7 @@ class Search extends Component {
     renderPlanets(item, index){
         return(
             <View
-            style={[styles.border, {marginBottom: 20}]}>
+            style={[styles.border, {marginBottom: 20, padding: 5}]}>
                 {this.renderRow('Name:', item.name)}
                 {this.renderRow('Rotation_period:', item.rotation_period)}
                 {this.renderRow('Orbital_period:', item.orbital_period)}
