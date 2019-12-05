@@ -1,3 +1,6 @@
+
+import {BaseUrl} from '../Const/URLConst'
+
 var hitGetAPI =async function (URL) {
     return fetch(URL, {
          method: 'GET',

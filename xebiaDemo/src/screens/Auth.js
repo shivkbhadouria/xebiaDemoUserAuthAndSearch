@@ -5,10 +5,13 @@ import {
     TextInput,
     Text,
     TouchableOpacity,
+    Alert
 } from 'react-native';
 
 import { connect } from 'react-redux';
 import styles from '../Utils/gStyle'
+
+import {BaseUrl, authUrl} from '../Const/URLConst'
 
 import { doAuthenticateMethod } from '../ActionCreator/AuthenticateCreator';
 
@@ -23,8 +26,21 @@ class Auth extends Component {
         }
     }
 
+    UNSAFE_componentWillReceiveProps(props) {
+        if (this.props.authResponse) {
+            let user = this.props.authResponse[0]
+            console.log('this is user', JSON.stringify(user));
+            if ((this.state.userName === user.name) && (this.state.userDob === user.birth_year)) {
+                this.props.navigation.navigate('NSearch');
+            } else {
+                Alert.alert("Authentication error!!");
+            }
+        }
+    }
+
     checkAuthValidation() {
-        this.props.doAuthenticateMethod('URL')
+        URL = BaseUrl+authUrl+this.state.userName
+        this.props.doAuthenticateMethod(BaseUrl+authUrl+this.state.userName)
     }
 
 
