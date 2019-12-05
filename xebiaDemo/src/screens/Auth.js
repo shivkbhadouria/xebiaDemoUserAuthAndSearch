@@ -3,10 +3,12 @@ import {
     View,
     SafeAreaView,
     TextInput,
+    Text,
     TouchableOpacity,
 } from 'react-native';
 
 import { connect } from 'react-redux';
+import styles from '../Utils/gStyle'
 
 import { doAuthenticateMethod } from '../ActionCreator/AuthenticateCreator';
 
@@ -22,7 +24,7 @@ class Auth extends Component {
     }
 
     checkAuthValidation() {
-        this.props.getListApiIntegrationMethod('URL')
+        this.props.doAuthenticateMethod('URL')
     }
 
 
@@ -39,19 +41,35 @@ class Auth extends Component {
                     justifyContent: 'center',
                 }}>
                     <TextInput
-                    style={{height: 40, width: '100%', marginBottom: 20}}
+                    style={[{height: 40, width: '100%', marginBottom: 20}, styles.border]}
                     placeholder="User name"
-                    onChangeText={(text) => this.setState({userName})}
-                    value={this.state.userName}></TextInput>
+                    onChangeText={(text) => this.setState({userName: text})}
+                    value={this.state.userName}/>
+
                     <TextInput
-                    style={{height: 40, width: '100%', marginBottom: 20}}
+                    style={[{height: 40, width: '100%', marginBottom: 20}, styles.border]}
                     placeholder="DOB"
-                    onChangeText={(text) => this.setState({userDob})}
-                    value={this.state.userDob}></TextInput>
+                    onChangeText={(text) => this.setState({userDob: text})}
+                    value={this.state.userDob}/>
+
                     <TouchableOpacity
-                    style={{height: 40, width: '100%', marginBottom: 20}}
+                    style={[
+                        {
+                            height: 40,
+                            width: '100%',
+                            marginBottom: 20,
+                            backgroundColor: '#195F04',
+                            alignItems: 'center',
+                            justifyContent: 'center'
+                        }, 
+                        styles.border]}
                     onPress={() => this.checkAuthValidation()}
-                    ></TouchableOpacity>
+                    >
+                        <Text
+                        style={{
+                            color: 'white'
+                        }}>Login</Text>
+                    </TouchableOpacity>
                 </View>
             </SafeAreaView>
         );
